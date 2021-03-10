@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 function App() {
+  const [llamando, setLlamando] = useState(false);
   return (
     <div className="contenedor">
       {/* <!-- El siguiente elemento se oculta añadiéndole la clase "off" -->  */}
@@ -23,9 +26,9 @@ function App() {
           <span className="numero"></span>
           {/* <!-- El botón de llamar debe tener la clase "activo" cuando --> 
           <!-- el número de teléfono tiene 9 cifras -->*/}
-          <a href="#" className="llamar">Llamar</a>
+          <a href="#" className={`llamar${!llamando ? " activo" : ""}`}>Llamar</a>
           {/* <!-- Sólo se tiene que ver un botón u otro --> */}
-          <a href="#" className="colgar">Colgar</a>
+          <a href="#" className={`colgar${llamando ? " activo" : ""}`}>Colgar</a>
         </div>
       </main>
     </div>

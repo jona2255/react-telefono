@@ -9,11 +9,18 @@ function App() {
     e.preventDefault();
     setLlamando(true);
     setDeshabilitarBoton(true);
+    colgadoAutomatico();
   };
   const colgar = (e) => {
     e.preventDefault();
     setLlamando(false);
     setDeshabilitarBoton(false);
+  };
+  const colgadoAutomatico = () => {
+    setTimeout(() => {
+      setLlamando(false);
+      setDeshabilitarBoton(false);
+    }, 5000);
   };
   return (
     <div className="contenedor">

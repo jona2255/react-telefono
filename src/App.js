@@ -38,10 +38,12 @@ function App() {
   const colgar = (e) => {
     e.preventDefault();
     setLlamando(false);
+    setnumeroTelefono("");
   };
   const colgadoAutomatico = () => {
     setTimeout(() => {
       setLlamando(false);
+      setnumeroTelefono("");
     }, 5000);
   };
   return (

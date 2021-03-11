@@ -30,8 +30,10 @@ function App() {
 
   const llamar = (e) => {
     e.preventDefault();
-    setLlamando(true);
-    colgadoAutomatico();
+    if (numeroTelefono.length === 9) {
+      setLlamando(true);
+      colgadoAutomatico();
+    }
   };
   const colgar = (e) => {
     e.preventDefault();
@@ -60,8 +62,8 @@ function App() {
         <div className="acciones">
           <span className="numero">{numeroTelefono}</span>
           {!llamando ?
-            <a href="llamar" className={`llamar${!llamando && numeroTelefono.length === 9 ? " activo" : ""}`} onClick={llamar}>Llamar</a>
-            : <a href="colgar" className={`colgar${llamando ? " activo" : ""}`} onClick={colgar}>Colgar</a>}
+            <a href="llamar" className={`llamar${numeroTelefono.length === 9 ? " activo" : ""}`} onClick={llamar}>Llamar</a>
+            : <a href="colgar" className="colgar activo" onClick={colgar}>Colgar</a>}
         </div>
       </main>
     </div>

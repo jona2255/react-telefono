@@ -6,6 +6,8 @@ function App() {
 
   const [numeroTelefono, setnumeroTelefono] = useState("");
 
+  const [estaLlamando, setEstaLlamando] = useState(false);
+
   const agregarNumero = e => {
     e.preventDefault();
     if (numeroTelefono.length < 9) {
@@ -33,23 +35,26 @@ function App() {
     e.preventDefault();
     setLlamando(true);
     setDeshabilitarBoton(true);
+    setEstaLlamando(true);
     colgadoAutomatico();
   };
   const colgar = (e) => {
     e.preventDefault();
     setLlamando(false);
     setDeshabilitarBoton(false);
+    setEstaLlamando(false);
   };
   const colgadoAutomatico = () => {
     setTimeout(() => {
       setLlamando(false);
       setDeshabilitarBoton(false);
+      setEstaLlamando(false);
     }, 5000);
   };
   return (
     <div className="contenedor">
       {/* <!-- El siguiente elemento se oculta añadiéndole la clase "off" -->  */}
-      <span className="mensaje">Llamando...</span>
+      <span className="mensaje" hidden={estaLlamando ? false : true}>Llamando...</span>
       <main className="telefono">
         <div className="botones">
           <ol className="teclado">

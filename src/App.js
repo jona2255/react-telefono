@@ -2,7 +2,6 @@ import { useState } from "react";
 
 function App() {
   const [llamando, setLlamando] = useState(false);
-  const [deshabilitarBoton, setDeshabilitarBoton] = useState(false);
 
   const [numeroTelefono, setnumeroTelefono] = useState("");
 
@@ -32,18 +31,15 @@ function App() {
   const llamar = (e) => {
     e.preventDefault();
     setLlamando(true);
-    setDeshabilitarBoton(true);
     colgadoAutomatico();
   };
   const colgar = (e) => {
     e.preventDefault();
     setLlamando(false);
-    setDeshabilitarBoton(false);
   };
   const colgadoAutomatico = () => {
     setTimeout(() => {
       setLlamando(false);
-      setDeshabilitarBoton(false);
     }, 5000);
   };
   return (
@@ -55,19 +51,17 @@ function App() {
           <ol className="teclado">
             {
               listaNumeros.map(numero => {
-                return (<li><button name={numero} onClick={agregarNumero} disabled={deshabilitarBoton}>{numero}</button></li>);
+                return (<li><button name={numero} onClick={agregarNumero} disabled={llamando}>{numero}</button></li>);
               })
             }
-            <li><button name="borrar" onClick={borrarNumero} disabled={deshabilitarBoton} className="big">borrar</button></li>
+            <li><button name="borrar" onClick={borrarNumero} disabled={llamando} className="big">borrar</button></li>
           </ol>
         </div>
         <div className="acciones">
           <span className="numero">{numeroTelefono}</span>
-          {/* <!-- El botón de llamar debe tener la clase "activo" cuando -->
-          <!-- el número de teléfono tiene 9 cifras -->*/}
-          <a href="llamar" className={`llamar${!llamando && numeroTelefono.length === 9 ? " activo" : ""}`} onClick={llamar}>Llamar</a>
-          {/* <!-- Sólo se tiene que ver un botón u otro --> */}
-          <a href="colgar" className={`colgar${llamando ? " activo" : ""}`} onClick={colgar}>Colgar</a>
+          {!llamando ?
+            <a href="llamar" className={`llamar${!llamando && numeroTelefono.length === 9 ? " activo" : ""}`} onClick={llamar}>Llamar</a>
+            : <a href="colgar" className={`colgar${llamando ? " activo" : ""}`} onClick={colgar}>Colgar</a>}
         </div>
       </main>
     </div>

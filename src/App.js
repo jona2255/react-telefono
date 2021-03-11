@@ -9,8 +9,6 @@ function App() {
     e.preventDefault();
     if (numeroTelefono.length < 9) {
       setnumeroTelefono(numeroTelefono + e.target.name);
-    } else {
-      setnumeroTelefono(numeroTelefono);
     }
   };
 

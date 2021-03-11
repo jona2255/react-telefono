@@ -45,13 +45,13 @@ function App() {
   return (
     <div className="contenedor">
       {/* <!-- El siguiente elemento se oculta añadiéndole la clase "off" -->  */}
-      <span className="mensaje">Llamando...</span>
+      <span className={`mensaje ${llamando ? "" : " off"}`} >Llamando...</span>
       <main className="telefono">
         <div className="botones">
           <ol className="teclado">
             {
               listaNumeros.map(numero => {
-                return (<li><button name={numero} onClick={agregarNumero} disabled={llamando}>{numero}</button></li>);
+                return (<li key={numero}><button name={numero} onClick={agregarNumero} disabled={llamando}>{numero}</button></li>);
               })
             }
             <li><button name="borrar" onClick={borrarNumero} disabled={llamando} className="big">borrar</button></li>

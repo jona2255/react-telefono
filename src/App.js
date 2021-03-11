@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Botones from "./components/Botones";
+import Mensaje from "./components/Mensaje";
 
 function App() {
   const [llamando, setLlamando] = useState(false);
@@ -49,7 +50,7 @@ function App() {
   return (
     <div className="contenedor">
       {/* <!-- El siguiente elemento se oculta añadiéndole la clase "off" -->  */}
-      <span className={`mensaje ${llamando ? "" : " off"}`} >Llamando...</span>
+      <Mensaje llamando={llamando} />
       <main className="telefono">
         <div className="botones">
           <ol className="teclado">

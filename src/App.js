@@ -54,7 +54,7 @@ function App() {
   return (
     <div className="contenedor">
       {/* <!-- El siguiente elemento se oculta añadiéndole la clase "off" -->  */}
-      <span className="mensaje" hidden={estaLlamando ? false : true}>Llamando...</span>
+      <span className={`mensaje ${estaLlamando ? "" : " off"}`} >Llamando...</span>
       <main className="telefono">
         <div className="botones">
           <ol className="teclado">

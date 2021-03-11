@@ -35,7 +35,6 @@ function App() {
       setColgadoAutomatico(setTimeout(() => {
         setLlamando(false);
         setnumeroTelefono("");
-        console.log(15);
       }, 5000)
       );
     }

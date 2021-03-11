@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Botones from "./components/Botones";
 
 function App() {
   const [llamando, setLlamando] = useState(false);
@@ -62,9 +63,12 @@ function App() {
         </div>
         <div className="acciones">
           <span className="numero">{numeroTelefono}</span>
-          {!llamando ?
-            <a href="llamar" className={`llamar${numeroTelefono.length === 9 ? " activo" : ""}`} onClick={llamar}>Llamar</a>
-            : <a href="colgar" className="colgar activo" onClick={colgar}>Colgar</a>}
+          <Botones
+            llamando={llamando}
+            numeroTelefono={numeroTelefono}
+            llamar={llamar}
+            colgar={colgar}
+          />
         </div>
       </main>
     </div>

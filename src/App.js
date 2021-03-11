@@ -5,6 +5,8 @@ function App() {
 
   const [numeroTelefono, setnumeroTelefono] = useState("");
 
+  const [colgadoAutomatico, setColgadoAutomatico] = useState(null);
+
   const agregarNumero = e => {
     e.preventDefault();
     if (numeroTelefono.length < 9) {
@@ -30,19 +32,19 @@ function App() {
     e.preventDefault();
     if (numeroTelefono.length === 9) {
       setLlamando(true);
-      colgadoAutomatico();
+      setColgadoAutomatico(setTimeout(() => {
+        setLlamando(false);
+        setnumeroTelefono("");
+        console.log(15);
+      }, 5000)
+      );
     }
   };
   const colgar = (e) => {
     e.preventDefault();
     setLlamando(false);
     setnumeroTelefono("");
-  };
-  const colgadoAutomatico = () => {
-    setTimeout(() => {
-      setLlamando(false);
-      setnumeroTelefono("");
-    }, 5000);
+    clearTimeout(colgadoAutomatico);
   };
   return (
     <div className="contenedor">

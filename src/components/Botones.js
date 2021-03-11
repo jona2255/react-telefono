@@ -1,19 +1,27 @@
 import PropTypes from "prop-types";
+import BotonLlamar from "./BotonLlamar";
+import BotonColgar from "./BotonColgar";
+
 
 const Botones = (props) => {
   const { llamando, numeroTelefono, llamar, colgar } = props;
   return (
     !llamando ?
-      <a href="llamar" className={`llamar${numeroTelefono.length === 9 ? " activo" : ""}`} onClick={llamar}>Llamar</a>
-      : <a href="colgar" className="colgar activo" onClick={colgar}>Colgar</a>
+      <BotonLlamar
+        numeroTelefono={numeroTelefono}
+        llamar={llamar}
+      /> :
+      <BotonColgar
+        colgar={colgar}
+      />
   );
 };
 
 Botones.propTypes = {
-  llamando: PropTypes.bool,
-  numeroTelefono: PropTypes.string,
-  llamar: PropTypes.func,
-  colgar: PropTypes.func
+  llamando: PropTypes.bool.isRequired,
+  numeroTelefono: PropTypes.string.isRequired,
+  llamar: PropTypes.func.isRequired,
+  colgar: PropTypes.func.isRequired
 };
 
 export default Botones;

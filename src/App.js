@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Botones from "./components/Botones";
+import Marcador from "./components/Marcador";
 import Mensaje from "./components/Mensaje";
+import Teclado from "./components/Teclado";
 
 function App() {
   const [llamando, setLlamando] = useState(false);
@@ -54,16 +56,16 @@ function App() {
       <main className="telefono">
         <div className="botones">
           <ol className="teclado">
-            {
-              listaNumeros.map(numero => {
-                return (<li key={numero}><button name={numero} onClick={agregarNumero} disabled={llamando}>{numero}</button></li>);
-              })
-            }
+            <Teclado
+              listaNumeros={listaNumeros}
+              agregarNumero={agregarNumero}
+              llamando={llamando}
+            />
             <li><button name="borrar" onClick={borrarNumero} disabled={llamando} className="big">borrar</button></li>
           </ol>
         </div>
         <div className="acciones">
-          <span className="numero">{numeroTelefono}</span>
+          <Marcador numeroTelefono={numeroTelefono} />
           <Botones
             llamando={llamando}
             numeroTelefono={numeroTelefono}
